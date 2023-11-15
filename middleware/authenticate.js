@@ -21,7 +21,6 @@ const authenticate =async(req, res, next)=>{
     try {
         const {id} = jwt.verify(token, SECRET_KEY);
     
-        // const user = await db.query('SELECT * FROM users WHERE id = $1', [id]);
         const {data} = await supabase
         .from('users')
         .select('*')

@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const authRouter= require('./routers/auth.js');
-const userRouter = require('./routers/users.js');
+const authRouter= require('./routes/auth.js');
+const userRouter = require('./routes/users.js');
+const linksRouter = require('./routes/links.js');
 
 
 const app= express();
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use("/auth", authRouter);
 
 app.use("/", userRouter);
+
+app.use("/", linksRouter);
 
 app.use((req, res, next) => {
     res.status(404).json({ success:true, error: "Not found" });
