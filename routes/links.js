@@ -7,5 +7,5 @@ const authenticate = require('../middleware/authenticate');
 router.post('/shortLink', authenticate, ctrl.makeShort );
 
 router.get('/list', authenticate, ctrl.showAllLinks);
-router.get('/:shortCode', authenticate, ctrl.reroute);
+router.get('/:shortCode',  ctrl.reroute);
 module.exports = router;

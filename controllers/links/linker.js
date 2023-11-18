@@ -71,7 +71,7 @@ res.status(201).json({
 
 
 const reroute =async(req, res, next)=>{
-const userId =req.user;  
+// const userId =req.user;  
 const shortCode =req.params.shortCode;
 
 try {
@@ -83,7 +83,20 @@ try {
   if (link.data.length===0) {
     return res.status(404).json({message: "Invalid short URL"})
   };
+// try {
+//    const { data, error } = await supabase
+//    .rpc('increment_calls', { shortcode: shortCode });
+// console.log("DATAAAAAA: ",data);
+//   if (error) {
+//     console.error(error);
+//     return res.status(500).json({message: "Error updating calls", error: error.message});
+//   } 
+// } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({message: "Server error", error: error.message});
+//   }
   
+
   res.redirect(link.data[0].link);
 
 } catch (error) {
@@ -107,7 +120,7 @@ const showAllLinks =async(req, res, next)=>{
     .from('links')
     .select('*')
     .eq('user_id', userId.id);
-// console.log(link.data);
+
     if (link.data.length===0) {
         return res.status(200).json({message: "This user didn`t create any short URL"})
       };

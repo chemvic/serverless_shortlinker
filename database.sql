@@ -8,7 +8,8 @@ CREATE TABLE links (
     id SERIAL PRIMARY KEY,
     shortCode VARCHAR(6) NOT NULL,
     link VARCHAR(1000) NOT NULL,
-    user_id INTEGER FOREIGN KEY (user_id) users (id));
+    user_id INTEGER FOREIGN KEY (user_id) users (id),
+    calls INTEGER(255) NOT NULL DEFAULT '0');
 
      
    
